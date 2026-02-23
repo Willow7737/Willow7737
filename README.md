@@ -9,36 +9,31 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Willow7737&label=Profile%20Views&color=6A5ACD&style=for-the-badge" />
+  <img src="https://count.getloli.com/get/@Willow7737?theme=rule34" />
 </p>
-
----
-
-## 🚀 Vision
-
-I architect modular, extensible systems engineered for long-term scalability.
-
-Focused on:
-- Artificial Intelligence Systems
-- Social Platform Infrastructure
-- Cross-Platform Admin Architectures
-- Mobile-First Ecosystems
-- Token & Monetization-Ready Platforms
 
 ---
 
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Willow7737&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github&cache_seconds=1800" height="170"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=Willow7737&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&rank_icon=github&cache_seconds=86400" height="180"/>
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true&cache_seconds=1800" height="170"/>
+  <img src="https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true&cache_seconds=86400" height="180"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true&cache_seconds=1800"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&cache_seconds=86400"/>
+</p>
+
+---
+
+## 🏆 Achievements
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=Willow7737&theme=tokyonight&no-frame=true&row=1&column=6&margin-w=15&margin-h=15" />
 </p>
 
 ---
@@ -64,18 +59,8 @@ Focused on:
 ## 📈 Contribution Activity
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Willow7737&theme=tokyo-night&hide_border=true&area=true"/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Willow7737&theme=tokyo-night&hide_border=true&area=true" />
 </p>
-
----
-
-## 🌍 Strategic Direction
-
-Currently building:
-- AI-Enhanced Social Platforms
-- Scalable Backend Architectures
-- Intelligent Admin Control Systems
-- Dark-First Design Systems
 
 ---
 
