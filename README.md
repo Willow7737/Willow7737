@@ -17,15 +17,15 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Willow7737&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&rank_icon=github&cache_seconds=86400" height="180"/>
+  <img src="https://github-readme-stats-db1vejk6p-willow7737s-projects.vercel.app/api?username=Willow7737&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&rank_icon=github" height="180"/>
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true&cache_seconds=86400" height="180"/>
+  <img src="https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true" height="180"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true&langs_count=8&cache_seconds=86400"/>
+  <img src="https://github-readme-stats-db1vejk6p-willow7737s-projects.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true&langs_count=8"/>
 </p>
 
 ---
@@ -33,7 +33,7 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 ## 🏆 Achievements
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Willow7737&theme=tokyonight&no-frame=true&row=1&column=6&margin-w=15&margin-h=15" />
+  <img src="https://github-profile-trophy-lubfkr2ny-willow7737s-projects.vercel.app/?username=Willow7737&theme=tokyonight&no-frame=true&row=1&column=6&margin-w=15&margin-h=15" />
 </p>
 
 ---
