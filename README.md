@@ -1,16 +1,28 @@
-## Hi there 👋
+# Welcome to My GitHub Profile
 
-<!--
-**Willow7737/Willow7737** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+![Visitor Counter](https://example.com/visitor-counter)
 
-Here are some ideas to get you started:
+## About Me
+Hello! I'm Willow7737, a passionate developer with a love for anime and technology. In this README, I want to showcase my skills, projects, and interests in a simple yet beautiful format.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Skills
+- **Programming Languages:** Python, JavaScript, C++
+- **Web Development:** HTML, CSS, React
+- **Databases:** MySQL, MongoDB
+
+## Projects
+### 1. Anime Art Gallery
+A web application showcasing a collection of beautiful anime art.
+
+### 2. Personal Portfolio
+A portfolio site to display my projects and skills.
+
+### 3. Game Development
+Currently developing a simple 2D game inspired by classic anime.
+
+## Interests
+- Anime and Manga
+- Video Games
+- Technology and Programming
+
+Feel free to check out my projects and connect with me on my social media!
