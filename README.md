@@ -8,6 +8,10 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
   <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=6A5ACD&center=true&vCenter=true&width=800&lines=Engineering+Scalable+Digital+Ecosystems;Architecting+Future-Ready+Platforms;Building+AI-Driven+Social+Infrastructure;Designing+Systems+That+Scale" />
 </p>
 
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=Willow7737&label=Profile%20Views&color=6A5ACD&style=for-the-badge" />
+</p>
+
 ---
 
 ## 🚀 Vision
@@ -26,20 +30,15 @@ Focused on:
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Willow7737&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" height="170"/>
-  <img src="https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true" height="170"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=Willow7737&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github&cache_seconds=1800" height="170"/>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true"/>
+  <img src="https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true&cache_seconds=1800" height="170"/>
 </p>
 
----
-
-## 🏆 Achievements
-
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Willow7737&theme=tokyonight&no-frame=true&row=1&column=7" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true&cache_seconds=1800"/>
 </p>
 
 ---
@@ -62,10 +61,10 @@ Focused on:
 
 ---
 
-## 📈 Contribution Graph
+## 📈 Contribution Activity
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Willow7737&theme=tokyo-night&hide_border=true"/>
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Willow7737&theme=tokyo-night&hide_border=true&area=true"/>
 </p>
 
 ---
