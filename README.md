@@ -1,117 +1,86 @@
-👋 Israel Asante Yeboah
+# 👋 Israel Asante Yeboah
 
 <h3 align="center">
 AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
-</h3><p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Inter&size=24&pause=1000&color=6A5ACD&center=true&vCenter=true&width=800&lines=Engineering+Scalable+Digital+Ecosystems;Architecting+Future-Ready+Platforms;Building+AI-Driven+Social+Infrastructure;Designing+Systems+That+Scale" />
+</h3>
+
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=6A5ACD&center=true&vCenter=true&width=800&lines=Engineering+Scalable+Digital+Ecosystems;Architecting+Future-Ready+Platforms;Building+AI-Driven+Social+Infrastructure;Designing+Systems+That+Scale" />
 </p>
----
-
-🚀 Vision
-
-I architect modular, extensible systems engineered for long-term evolution.
-
-My work bridges:
-
-Artificial Intelligence
-
-Social Platform Infrastructure
-
-Mobile-First Ecosystems
-
-Cross-Platform Admin Architectures
-
-Token & Monetization-Ready Systems
-
-
-I don’t build MVPs.
-I build foundations.
-
 
 ---
 
-🔥 Live GitHub Metrics
+## 🚀 Vision
+
+I architect modular, extensible systems engineered for long-term scalability.
+
+Focused on:
+- Artificial Intelligence Systems
+- Social Platform Infrastructure
+- Cross-Platform Admin Architectures
+- Mobile-First Ecosystems
+- Token & Monetization-Ready Platforms
+
+---
+
+## 📊 GitHub Analytics
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github" height="170"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=tokyonight&hide_border=true" height="170"/>
-</p><p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight&hide_border=true"/>
+  <img src="https://streak-stats.demolab.com?user=YOUR_USERNAME&theme=tokyonight&hide_border=true" height="170"/>
 </p>
----
-
-🧠 Flagship Ecosystems
-
-🌌 Horizon
-
-Modular social media architecture built for AI-powered feeds, scalable notifications, token monetization, and extensible feature modules.
-
-✨ Starry
-
-Cross-platform application ecosystem with adaptive admin control infrastructure and scalable backend orchestration.
-
-🕷 Spidroid Technologies
-
-AI bot development, intelligent systems engineering, and scalable digital platform innovation.
-
-
----
-
-⚙️ Technology Stack
-
-Core Languages
-
-    
-
-Frameworks & Infrastructure
-
-    
-
-
----
-
-🏗 Engineering Doctrine
-
-Modular by default
-
-Scalable by design
-
-Dark-first UI systems
-
-Feature abstraction for future expansion
-
-Architecture before aesthetics
-
-
-
----
-
-📈 Contribution Activity
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=YOUR_USERNAME&theme=onestar&no-frame=true&row=1&column=7"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight&hide_border=true"/>
 </p>
----
-
-🌍 Strategic Direction
-
-Currently exploring:
-
-AI-Augmented Social Networks
-
-Adaptive Recommendation Systems
-
-Token-Based Platform Economies
-
-Distributed Admin Control Centers
-
-Intelligent Automation Pipelines
-
-
 
 ---
 
-📫 Connect
+## 🏆 Achievements
 
-📧 israelasanteyeboah@gmail.com
-🌐 spidroid.com
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=YOUR_USERNAME&theme=tokyonight&no-frame=true&row=1&column=7" />
+</p>
+
+---
+
+## 🧠 Core Stack
+
+### Languages
+![Kotlin](https://img.shields.io/badge/Kotlin-000?style=for-the-badge&logo=kotlin)
+![Dart](https://img.shields.io/badge/Dart-000?style=for-the-badge&logo=dart)
+![Python](https://img.shields.io/badge/Python-000?style=for-the-badge&logo=python)
+![TypeScript](https://img.shields.io/badge/TypeScript-000?style=for-the-badge&logo=typescript)
+![JavaScript](https://img.shields.io/badge/JavaScript-000?style=for-the-badge&logo=javascript)
+
+### Frameworks & Tools
+![Flutter](https://img.shields.io/badge/Flutter-000?style=for-the-badge&logo=flutter)
+![Firebase](https://img.shields.io/badge/Firebase-000?style=for-the-badge&logo=firebase)
+![Node.js](https://img.shields.io/badge/Node.js-000?style=for-the-badge&logo=node.js)
+![Android](https://img.shields.io/badge/Android-000?style=for-the-badge&logo=android)
+![Git](https://img.shields.io/badge/Git-000?style=for-the-badge&logo=git)
+
+---
+
+## 📈 Contribution Graph
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=tokyo-night&hide_border=true"/>
+</p>
+
+---
+
+## 🌍 Strategic Direction
+
+Currently building:
+- AI-Enhanced Social Platforms
+- Scalable Backend Architectures
+- Intelligent Admin Control Systems
+- Dark-First Design Systems
+
+---
+
+## 📫 Connect
+
+📧 israelasanteyeboah@gmail.com  
+🌐 https://spidroid.com
