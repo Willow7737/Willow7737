@@ -1,4 +1,4 @@
-# 👋 Israel Asante Yeboah
+# 👋 Asante Yeboah
 
 <h3 align="center">
 AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
