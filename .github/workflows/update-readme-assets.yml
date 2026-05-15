@@ -1,0 +1,40 @@
+name: Update README Assets
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Fetch GitHub Stats
+        run: |
+          curl -s "https://github-readme-stats.vercel.app/api?username=Willow7737&show_icons=true&include_all_commits=true&count_private=true&theme=tokyonight&hide_border=true&rank_icon=github" > assets/stats.svg
+          
+      - name: Fetch Top Languages
+        run: |
+          curl -s "https://github-readme-stats.vercel.app/api/top-langs/?username=Willow7737&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" > assets/top-langs.svg
+          
+      - name: Fetch Streak Stats
+        run: |
+          curl -s "https://streak-stats.demolab.com?user=Willow7737&theme=tokyonight&hide_border=true" > assets/streak.svg
+          
+      - name: Fetch Activity Graph
+        run: |
+          curl -s "https://github-readme-activity-graph.vercel.app/graph?username=Willow7737&theme=tokyo-night&hide_border=true&area=true" > assets/activity.svg
+          
+      - name: Fetch Trophies
+        run: |
+          curl -s "https://github-profile-trophy.vercel.app/?username=Willow7737&theme=tokyonight&no-frame=true&row=1&column=6&margin-w=15&margin-h=15" > assets/trophies.svg
+
+      - name: Commit & Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update readme assets"
+          file_pattern: "assets/*.svg"
