@@ -13,12 +13,12 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img src="assets/stats.svg" height="180"/>
-  <img src="assets/streak.svg" height="180"/>
+  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.svg?v=2" height="180"/>
+  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.svg?v=2" height="180"/>
 </p>
 
 <p align="center">
-  <img src="assets/top-langs.svg"/>
+  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/top-langs.svg?v=2"/>
 </p>
 
 ---
@@ -26,7 +26,7 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 ## 🏆 Achievements
 
 <p align="center">
-  <img src="assets/trophies.svg" />
+  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/trophies.svg?v=2" />
 </p>
 
 ---
@@ -54,7 +54,7 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 ## 📈 Contribution Activity
 
 <p align="center">
-  <img src="assets/activity.svg" />
+  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/activity.svg?v=2" />
 </p>
 
 ---
