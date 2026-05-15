@@ -46,6 +46,8 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
 ![Python](https://img.shields.io/badge/Python-000?style=for-the-badge&logo=python)
 ![TypeScript](https://img.shields.io/badge/TypeScript-000?style=for-the-badge&logo=typescript)
 ![JavaScript](https://img.shields.io/badge/JavaScript-000?style=for-the-badge&logo=javascript)
+![Java](https://img.shields.io/badge/Java-000?style=for-the-badge&logo=java)
+![Rust](https://img.shields.io/badge/Rust-000?style=for-the-badge&logo=rust)
 
 ### Frameworks & Tools
 ![Flutter](https://img.shields.io/badge/Flutter-000?style=for-the-badge&logo=flutter)
