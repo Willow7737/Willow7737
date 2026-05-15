@@ -8,10 +8,6 @@ AI Systems Architect • Scalable Platform Engineer • Founder @ Spidroid
   <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=6A5ACD&center=true&vCenter=true&width=800&lines=Engineering+Scalable+Digital+Ecosystems;Architecting+Future-Ready+Platforms;Building+AI-Driven+Social+Infrastructure;Designing+Systems+That+Scale" />
 </p>
 
-<p align="center">
-  <img src="https://profile-counter.glitch.me/Willow7737/count.svg" />
-</p>
-
 ---
 
 ## 📊 GitHub Analytics
