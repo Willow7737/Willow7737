@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">
-  <rect fill="#1f2335" width="400" height="100" rx="6"/>
-  <text x="200" y="55" text-anchor="middle" fill="#f7768e" font-size="14" font-family="sans-serif">Stats temporarily unavailable</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195">
+  <rect fill="#1f2335" x="0.5" y="0.5" width="494" height="194" rx="6" stroke="#292e42" stroke-width="1"/>
+  <text x="15" y="35" fill="#7aa2f7" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">GitHub Streak</text>
+  <text x="124" y="80" text-anchor="middle" fill="#a9b1d6" font-size="14" font-family="Segoe UI,sans-serif">Total Contributions</text><text x="124" y="125" text-anchor="middle" fill="#9ece6a" font-size="34" font-weight="700" font-family="Segoe UI,sans-serif">818</text><text x="248" y="80" text-anchor="middle" fill="#a9b1d6" font-size="14" font-family="Segoe UI,sans-serif">Current Streak</text><text x="248" y="125" text-anchor="middle" fill="#ff9e64" font-size="34" font-weight="700" font-family="Segoe UI,sans-serif">7</text><text x="372" y="80" text-anchor="middle" fill="#a9b1d6" font-size="14" font-family="Segoe UI,sans-serif">Longest Streak</text><text x="372" y="125" text-anchor="middle" fill="#bb9af7" font-size="34" font-weight="700" font-family="Segoe UI,sans-serif">7</text>
 </svg>
