@@ -16,7 +16,7 @@ jobs:
       - name: Generate SVGs
         run: python .github/scripts/generate_stats.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_STATS_TOKEN }}   # <-- MUST be a PAT, not the default GITHUB_TOKEN
 
       - name: Commit & Push
         uses: stefanzweifel/git-auto-commit-action@v5
