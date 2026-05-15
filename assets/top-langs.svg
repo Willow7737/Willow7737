@@ -1,20 +1,4 @@
-The deployment is currently unavailable
-
-DEPLOYMENT_PAUSED
-
-cle1::mnhqc-1778878384876-e769cacb292d
-The deployment is currently unavailable
-
-DEPLOYMENT_PAUSED
-
-cle1::xzbss-1778878385890-b5cc64562363
-The deployment is currently unavailable
-
-DEPLOYMENT_PAUSED
-
-cle1::btkjb-1778878387904-3e7b8447433a
-The deployment is currently unavailable
-
-DEPLOYMENT_PAUSED
-
-cle1::vqt5z-1778878391922-82e0537eb108
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">
+  <rect fill="#1f2335" width="400" height="100" rx="6"/>
+  <text x="200" y="55" text-anchor="middle" fill="#f7768e" font-size="14" font-family="sans-serif">Stats temporarily unavailable</text>
+</svg>
