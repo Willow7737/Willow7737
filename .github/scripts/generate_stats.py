@@ -2,14 +2,12 @@
 """
 GitHub Profile Stats SVG Generator
 Uses GitHub GraphQL API (GITHUB_TOKEN) to generate self-contained SVGs.
-Zero external services. Zero rate-limit issues.
 """
 
 import os
 import sys
 import json
 import urllib.request
-import urllib.error
 from datetime import datetime
 from collections import defaultdict
 
@@ -112,7 +110,7 @@ def save(path, svg):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         f.write(svg)
-    print("  →", path)
+    print("  ->", path)
 
 
 def stats_svg(data):
@@ -139,22 +137,19 @@ def stats_svg(data):
         x = 15 + col * 240
         y = 70 + row * 42
         rows.append(
-            f'<circle cx="{x+8}" cy="{y-4}" r="5" fill="{color}"/>'
-            f'<text x="{x+22}" y="{y}" fill="{T["text"]}" font-size="14" font-family="Segoe UI,Ubuntu,sans-serif">{label}:</text>'
-            f'<text x="{x+22+115}" y="{y}" fill="{T["bright"]}" font-size="14" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">{value}</text>'
+            '<circle cx="' + str(x + 8) + '" cy="' + str(y - 4) + '" r="5" fill="' + color + '"/>'
+            '<text x="' + str(x + 22) + '" y="' + str(y) + '" fill="' + T["text"] + '" font-size="14" font-family="Segoe UI,Ubuntu,sans-serif">' + label + ':</text>'
+            '<text x="' + str(x + 22 + 115) + '" y="' + str(y) + '" fill="' + T["bright"] + '" font-size="14" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">' + str(value) + '</text>'
         )
 
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195">
-'
-        f'  <rect fill="{T["card"]}" x="0.5" y="0.5" width="494" height="194" rx="6" stroke="{T["border"]}" stroke-width="1"/>
-'
-        f'  <text x="15" y="35" fill="{T["blue"]}" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">GitHub Stats</text>
-'
-        f'  {"".join(rows)}
-'
-        f'</svg>'
-    )
+    parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195">',
+        '  <rect fill="' + T["card"] + '" x="0.5" y="0.5" width="494" height="194" rx="6" stroke="' + T["border"] + '" stroke-width="1"/>',
+        '  <text x="15" y="35" fill="' + T["blue"] + '" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">GitHub Stats</text>',
+        '  ' + ''.join(rows),
+        '</svg>',
+    ]
+    return '\n'.join(parts)
 
 
 def langs_svg(data):
@@ -169,13 +164,10 @@ def langs_svg(data):
 
     if not lang_bytes:
         return (
-            f'<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100">
-'
-            f'  <rect fill="{T["card"]}" width="300" height="100" rx="6"/>
-'
-            f'  <text x="150" y="55" text-anchor="middle" fill="{T["text"]}" font-size="14" font-family="sans-serif">No language data</text>
-'
-            f'</svg>'
+            '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100">\n'
+            '  <rect fill="' + T["card"] + '" width="300" height="100" rx="6"/>\n'
+            '  <text x="150" y="55" text-anchor="middle" fill="' + T["text"] + '" font-size="14" font-family="sans-serif">No language data</text>\n'
+            '</svg>'
         )
 
     total = sum(lang_bytes.values())
@@ -186,25 +178,22 @@ def langs_svg(data):
         pct = size / total * 100
         c = lang_color.get(name, T["text"])
         parts.append(
-            f'<text x="15" y="{y}" fill="{T["bright"]}" font-size="14" font-weight="600" font-family="Segoe UI,sans-serif">{name}</text>'
-            f'<text x="280" y="{y}" text-anchor="end" fill="{T["text"]}" font-size="14" font-family="Segoe UI,sans-serif">{pct:.1f}%</text>'
-            f'<rect x="15" y="{y+10}" width="250" height="8" rx="4" fill="{T["border"]}"/>'
-            f'<rect x="15" y="{y+10}" width="{250*pct/100:.1f}" height="8" rx="4" fill="{c}"/>'
+            '<text x="15" y="' + str(y) + '" fill="' + T["bright"] + '" font-size="14" font-weight="600" font-family="Segoe UI,sans-serif">' + name + '</text>'
+            '<text x="280" y="' + str(y) + '" text-anchor="end" fill="' + T["text"] + '" font-size="14" font-family="Segoe UI,sans-serif">' + ("%.1f" % pct) + '%</text>'
+            '<rect x="15" y="' + str(y + 10) + '" width="250" height="8" rx="4" fill="' + T["border"] + '"/>'
+            '<rect x="15" y="' + str(y + 10) + '" width="' + str(250 * pct / 100) + '" height="8" rx="4" fill="' + c + '"/>'
         )
         y += 42
 
     h = y + 15
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="300" height="{h}" viewBox="0 0 300 {h}">
-'
-        f'  <rect fill="{T["card"]}" x="0.5" y="0.5" width="299" height="{h-1}" rx="6" stroke="{T["border"]}" stroke-width="1"/>
-'
-        f'  <text x="15" y="35" fill="{T["blue"]}" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">Top Languages</text>
-'
-        f'  {"".join(parts)}
-'
-        f'</svg>'
-    )
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="' + str(h) + '" viewBox="0 0 300 ' + str(h) + '">',
+        '  <rect fill="' + T["card"] + '" x="0.5" y="0.5" width="299" height="' + str(h - 1) + '" rx="6" stroke="' + T["border"] + '" stroke-width="1"/>',
+        '  <text x="15" y="35" fill="' + T["blue"] + '" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">Top Languages</text>',
+        '  ' + ''.join(parts),
+        '</svg>',
+    ]
+    return '\n'.join(lines)
 
 
 def activity_svg(data):
@@ -222,31 +211,27 @@ def activity_svg(data):
             x = ml + ci * (cell + gap)
             y = mt + ri * (cell + gap)
             fill = day["color"] if day["contributionCount"] > 0 else T["border"]
-            cells.append(f'<rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" fill="{fill}"/>')
+            cells.append('<rect x="' + str(x) + '" y="' + str(y) + '" width="' + str(cell) + '" height="' + str(cell) + '" rx="2" fill="' + fill + '"/>')
 
     legend = (
-        f'<text x="{ml}" y="{h-15}" fill="{T["text"]}" font-size="11" font-family="sans-serif">Less</text>'
-        f'<rect x="{ml+35}" y="{h-24}" width="10" height="10" rx="2" fill="{T["border"]}"/>'
-        f'<rect x="{ml+50}" y="{h-24}" width="10" height="10" rx="2" fill="#0e4429"/>'
-        f'<rect x="{ml+65}" y="{h-24}" width="10" height="10" rx="2" fill="#006d32"/>'
-        f'<rect x="{ml+80}" y="{h-24}" width="10" height="10" rx="2" fill="#26a641"/>'
-        f'<rect x="{ml+95}" y="{h-24}" width="10" height="10" rx="2" fill="#39d353"/>'
-        f'<text x="{ml+115}" y="{h-15}" fill="{T["text"]}" font-size="11" font-family="sans-serif">More</text>'
+        '<text x="' + str(ml) + '" y="' + str(h - 15) + '" fill="' + T["text"] + '" font-size="11" font-family="sans-serif">Less</text>'
+        '<rect x="' + str(ml + 35) + '" y="' + str(h - 24) + '" width="10" height="10" rx="2" fill="' + T["border"] + '"/>'
+        '<rect x="' + str(ml + 50) + '" y="' + str(h - 24) + '" width="10" height="10" rx="2" fill="#0e4429"/>'
+        '<rect x="' + str(ml + 65) + '" y="' + str(h - 24) + '" width="10" height="10" rx="2" fill="#006d32"/>'
+        '<rect x="' + str(ml + 80) + '" y="' + str(h - 24) + '" width="10" height="10" rx="2" fill="#26a641"/>'
+        '<rect x="' + str(ml + 95) + '" y="' + str(h - 24) + '" width="10" height="10" rx="2" fill="#39d353"/>'
+        '<text x="' + str(ml + 115) + '" y="' + str(h - 15) + '" fill="' + T["text"] + '" font-size="11" font-family="sans-serif">More</text>'
     )
 
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">
-'
-        f'  <rect fill="{T["bg"]}" width="{w}" height="{h}" rx="6"/>
-'
-        f'  <text x="15" y="30" fill="{T["blue"]}" font-size="16" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">Contribution Activity</text>
-'
-        f'  {"".join(cells)}
-'
-        f'  {legend}
-'
-        f'</svg>'
-    )
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="' + str(w) + '" height="' + str(h) + '" viewBox="0 0 ' + str(w) + ' ' + str(h) + '">',
+        '  <rect fill="' + T["bg"] + '" width="' + str(w) + '" height="' + str(h) + '" rx="6"/>',
+        '  <text x="15" y="30" fill="' + T["blue"] + '" font-size="16" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">Contribution Activity</text>',
+        '  ' + ''.join(cells),
+        '  ' + legend,
+        '</svg>',
+    ]
+    return '\n'.join(lines)
 
 
 def streak_svg(data):
@@ -256,25 +241,22 @@ def streak_svg(data):
 
     def block(cx, label, value, color):
         return (
-            f'<text x="{cx}" y="{80}" text-anchor="middle" fill="{T["text"]}" font-size="14" font-family="Segoe UI,sans-serif">{label}</text>'
-            f'<text x="{cx}" y="{125}" text-anchor="middle" fill="{color}" font-size="34" font-weight="700" font-family="Segoe UI,sans-serif">{value}</text>'
+            '<text x="' + str(cx) + '" y="80" text-anchor="middle" fill="' + T["text"] + '" font-size="14" font-family="Segoe UI,sans-serif">' + label + '</text>'
+            '<text x="' + str(cx) + '" y="125" text-anchor="middle" fill="' + color + '" font-size="34" font-weight="700" font-family="Segoe UI,sans-serif">' + str(value) + '</text>'
         )
 
     b1 = block(124, "Total Contributions", f"{total:,}", T["green"])
     b2 = block(248, "Current Streak", cur, T["orange"] if cur > 0 else T["text"])
     b3 = block(372, "Longest Streak", longest, T["purple"])
 
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195">
-'
-        f'  <rect fill="{T["card"]}" x="0.5" y="0.5" width="494" height="194" rx="6" stroke="{T["border"]}" stroke-width="1"/>
-'
-        f'  <text x="15" y="35" fill="{T["blue"]}" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">GitHub Streak</text>
-'
-        f'  {b1}{b2}{b3}
-'
-        f'</svg>'
-    )
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195">',
+        '  <rect fill="' + T["card"] + '" x="0.5" y="0.5" width="494" height="194" rx="6" stroke="' + T["border"] + '" stroke-width="1"/>',
+        '  <text x="15" y="35" fill="' + T["blue"] + '" font-size="18" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">GitHub Streak</text>',
+        '  ' + b1 + b2 + b3,
+        '</svg>',
+    ]
+    return '\n'.join(lines)
 
 
 def trophies_svg(data):
@@ -286,15 +268,15 @@ def trophies_svg(data):
 
     ach = []
     if stars >= 100:
-        ach.append(("Starstruck", f"{stars} Stars", T["yellow"]))
+        ach.append(("Starstruck", str(stars) + " Stars", T["yellow"]))
     if contrib >= 1000:
         ach.append(("Committer", f"{contrib:,}", T["green"]))
     if repos >= 20:
-        ach.append(("Creator", f"{repos} Repos", T["blue"]))
+        ach.append(("Creator", str(repos) + " Repos", T["blue"]))
     if followers >= 50:
-        ach.append(("Influencer", f"{followers} Followers", T["red"]))
+        ach.append(("Influencer", str(followers) + " Followers", T["red"]))
     if forks >= 20:
-        ach.append(("Forker", f"{forks} Forks", T["purple"]))
+        ach.append(("Forker", str(forks) + " Forks", T["purple"]))
     if len(ach) < 3:
         ach.append(("Developer", "Building...", T["cyan"]))
 
@@ -307,36 +289,30 @@ def trophies_svg(data):
         x = gap + i * (bw + gap)
         y = 32
         badges.append(
-            f'<rect x="{x}" y="{y}" width="{bw}" height="{bh}" rx="8" fill="{T["card"]}" stroke="{color}" stroke-width="2"/>'
-            f'<text x="{x+bw/2}" y="{y+22}" text-anchor="middle" fill="{color}" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">{title}</text>'
-            f'<text x="{x+bw/2}" y="{y+40}" text-anchor="middle" fill="{T["text"]}" font-size="11" font-family="Segoe UI,sans-serif">{sub}</text>'
+            '<rect x="' + str(x) + '" y="' + str(y) + '" width="' + str(bw) + '" height="' + str(bh) + '" rx="8" fill="' + T["card"] + '" stroke="' + color + '" stroke-width="2"/>'
+            '<text x="' + str(x + bw / 2) + '" y="' + str(y + 22) + '" text-anchor="middle" fill="' + color + '" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">' + title + '</text>'
+            '<text x="' + str(x + bw / 2) + '" y="' + str(y + 40) + '" text-anchor="middle" fill="' + T["text"] + '" font-size="11" font-family="Segoe UI,sans-serif">' + sub + '</text>'
         )
 
-    return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{tw}" height="{th}" viewBox="0 0 {tw} {th}">
-'
-        f'  <rect fill="{T["bg"]}" width="{tw}" height="{th}" rx="6"/>
-'
-        f'  <text x="15" y="22" fill="{T["blue"]}" font-size="16" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">Achievements</text>
-'
-        f'  {"".join(badges)}
-'
-        f'</svg>'
-    )
+    lines = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="' + str(tw) + '" height="' + str(th) + '" viewBox="0 0 ' + str(tw) + ' ' + str(th) + '">',
+        '  <rect fill="' + T["bg"] + '" width="' + str(tw) + '" height="' + str(th) + '" rx="6"/>',
+        '  <text x="15" y="22" fill="' + T["blue"] + '" font-size="16" font-weight="600" font-family="Segoe UI,Ubuntu,sans-serif">Achievements</text>',
+        '  ' + ''.join(badges),
+        '</svg>',
+    ]
+    return '\n'.join(lines)
 
 
 def fallback():
     svg = (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">
-'
-        f'  <rect fill="{T["card"]}" width="400" height="100" rx="6"/>
-'
-        f'  <text x="200" y="55" text-anchor="middle" fill="{T["red"]}" font-size="14" font-family="sans-serif">Stats temporarily unavailable</text>
-'
-        f'</svg>'
+        '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">\n'
+        '  <rect fill="' + T["card"] + '" width="400" height="100" rx="6"/>\n'
+        '  <text x="200" y="55" text-anchor="middle" fill="' + T["red"] + '" font-size="14" font-family="sans-serif">Stats temporarily unavailable</text>\n'
+        '</svg>'
     )
     for n in ["stats", "streak", "top-langs", "activity", "trophies"]:
-        save(f"assets/{n}.svg", svg)
+        save("assets/" + n + ".svg", svg)
 
 
 def main():
