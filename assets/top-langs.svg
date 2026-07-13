@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated: 2026-07-13T14:26:55.619226 -->
+<!-- Generated: 2026-07-13T19:19:32.874603 -->
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="394" viewBox="0 0 300 394">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -38,49 +38,49 @@
     <text x="20" y="70" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Java</text>
     <text x="280" y="70" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">71.9%</text>
     <rect x="20" y="78" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="78" width="179.6946724060376" height="7" rx="3.5" fill="#b07219" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="179.6946724060376" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="78" width="179.68134059362998" height="7" rx="3.5" fill="#b07219" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="179.68134059362998" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="108" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Kotlin</text>
     <text x="280" y="108" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">9.3%</text>
     <rect x="20" y="116" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="116" width="23.249046295896548" height="7" rx="3.5" fill="#A97BFF" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="23.249046295896548" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="116" width="23.2473214149097" height="7" rx="3.5" fill="#A97BFF" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="23.2473214149097" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="146" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Rust</text>
     <text x="280" y="146" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">7.2%</text>
     <rect x="20" y="154" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="154" width="18.007480984973764" height="7" rx="3.5" fill="#dea584" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="18.007480984973764" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="154" width="18.006144983437327" height="7" rx="3.5" fill="#dea584" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="18.006144983437327" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="184" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Shell</text>
     <text x="280" y="184" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">3.1%</text>
     <rect x="20" y="192" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="192" width="7.785057820470325" height="7" rx="3.5" fill="#89e051" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="7.785057820470325" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="192" width="7.7844802355644696" height="7" rx="3.5" fill="#89e051" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="7.7844802355644696" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="222" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Python</text>
     <text x="280" y="222" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">2.4%</text>
     <rect x="20" y="230" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="230" width="6.101605251317946" height="7" rx="3.5" fill="#3572A5" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="6.101605251317946" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="230" width="6.101152564237654" height="7" rx="3.5" fill="#3572A5" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="6.101152564237654" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="260" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">TypeScript</text>
     <text x="280" y="260" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">1.4%</text>
     <rect x="20" y="268" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="268" width="3.434019810319597" height="7" rx="3.5" fill="#3178c6" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="3.434019810319597" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="268" width="3.4337650353321028" height="7" rx="3.5" fill="#3178c6" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="3.4337650353321028" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="298" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Makefile</text>
     <text x="280" y="298" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">1.2%</text>
     <rect x="20" y="306" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="306" width="2.982497804045821" height="7" rx="3.5" fill="#427819" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="2.982497804045821" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="306" width="2.9822765281409924" height="7" rx="3.5" fill="#427819" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="2.9822765281409924" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
     <text x="20" y="336" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">HTML</text>
     <text x="280" y="336" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">0.9%</text>
     <rect x="20" y="344" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="344" width="2.2951235467077153" height="7" rx="3.5" fill="#e34c26" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="2.2951235467077153" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    <rect x="20" y="344" width="2.2949532681114317" height="7" rx="3.5" fill="#e34c26" filter="url(#glow)">
+      <animate attributeName="width" from="0" to="2.2949532681114317" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
     </rect>
 </svg>
