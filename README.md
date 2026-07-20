@@ -1,4 +1,4 @@
-# <div align="center">👋 Asante Yeboah</div>
+# <div align="center">👋</div>
 
 <h3 align="center">
   <samp>
