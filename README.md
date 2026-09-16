@@ -82,7 +82,7 @@
 ## 📫 Connect
 
 <p align="center">
-  <a href="mailto:israelasanteyeboah@gmail.com">
+  <a href="mailto:spidroidtechnologiesinc@gmail.com">
     <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
   <a href="https://spidroid.com">
