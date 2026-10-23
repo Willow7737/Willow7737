@@ -1,4 +1,4 @@
-name: Update README Assets
+name: Update README Stats
 
 on:
   schedule:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate SVGs
+      - name: Update stats in README
         run: python .github/scripts/generate_stats.py
         env:
           GITHUB_TOKEN: ${{ secrets.GH_STATS_TOKEN }}
@@ -25,5 +25,5 @@ jobs:
       - name: Commit & Push
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: update readme assets"
-          file_pattern: "assets/*.svg"
+          commit_message: "chore: update readme stats"
+          file_pattern: "README.md"

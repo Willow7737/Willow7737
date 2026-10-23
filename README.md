@@ -31,22 +31,5 @@
 
 ## GitHub
 
-<p>
-  <img alt="GitHub stats" src="assets/stats.svg?v=4" width="400" height="180"/>
-  <img alt="Contribution streak" src="assets/streak.svg?v=4" width="400" height="180"/>
-</p>
-
-<p>
-  <img alt="Top languages" src="assets/top-langs.svg?v=4" width="816" height="118"/>
-</p>
-
-<p>
-  <img alt="Contribution activity" src="assets/activity.svg?v=4" width="816" height="194"/>
-</p>
-
-<p>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake-dark.svg?raw=true"/>
-    <img alt="Contribution snake" src="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake.svg?raw=true"/>
-  </picture>
-</p>
+<!-- STATS:START -->
+<!-- STATS:END -->
