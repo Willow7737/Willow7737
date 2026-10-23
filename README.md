@@ -1,91 +1,52 @@
-# <div align="center">👋</div>
-
-<h3 align="center">
-  <samp>
-    <span style="color:#7aa2f7">AI Systems Architect</span> • 
-    <span style="color:#bb9af7">Scalable Platform Engineer</span> • 
-    <span style="color:#9ece6a">Founder @ Spidroid</span>
-  </samp>
-</h3>
+<h1 align="center">Weaver</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=24&pause=1000&color=6A5ACD&center=true&vCenter=true&width=800&lines=Engineering+Scalable+Digital+Ecosystems;Architecting+Future-Ready+Platforms;Building+AI-Driven+Social+Infrastructure;Designing+Systems+That+Scale" />
+  Software engineer working on distributed systems and protocol engineering.<br/>
+  Founder of <a href="https://spidroid.com">Spidroid Technologies</a>.
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=Willow7737&color=6A5ACD&style=flat-square&label=Profile+Views" />
+  <a href="mailto:spidroidtechnologiesinc@gmail.com"><img alt="Email" src="https://img.shields.io/badge/Email-1a1b26?style=flat-square&logo=gmail&logoColor=7aa2f7"/></a>
+  <a href="https://spidroid.com"><img alt="Website" src="https://img.shields.io/badge/Website-1a1b26?style=flat-square&logo=googlechrome&logoColor=bb9af7"/></a>
 </p>
 
----
+## Currently
 
-## 📊 GitHub Analytics
+- **Omnia Protocol**: a DAG-based Byzantine fault tolerant consensus system, written in Rust.
+- **Android and web products** under Spidroid, in Kotlin and TypeScript.
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.svg?v=3" height="195"/>
-  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.svg?v=3" height="195"/>
+## Stack
+
+![Rust](https://img.shields.io/badge/Rust-1a1b26?style=flat-square&logo=rust&logoColor=ff9e64)
+![Kotlin](https://img.shields.io/badge/Kotlin-1a1b26?style=flat-square&logo=kotlin&logoColor=7aa2f7)
+![TypeScript](https://img.shields.io/badge/TypeScript-1a1b26?style=flat-square&logo=typescript&logoColor=bb9af7)
+![Python](https://img.shields.io/badge/Python-1a1b26?style=flat-square&logo=python&logoColor=9ece6a)
+![Dart](https://img.shields.io/badge/Dart-1a1b26?style=flat-square&logo=dart&logoColor=7dcfff)
+![Java](https://img.shields.io/badge/Java-1a1b26?style=flat-square&logo=openjdk&logoColor=f7768e)
+![Node.js](https://img.shields.io/badge/Node.js-1a1b26?style=flat-square&logo=nodedotjs&logoColor=9ece6a)
+![Flutter](https://img.shields.io/badge/Flutter-1a1b26?style=flat-square&logo=flutter&logoColor=7dcfff)
+![Android](https://img.shields.io/badge/Android-1a1b26?style=flat-square&logo=android&logoColor=7aa2f7)
+![Firebase](https://img.shields.io/badge/Firebase-1a1b26?style=flat-square&logo=firebase&logoColor=ff9e64)
+![Git](https://img.shields.io/badge/Git-1a1b26?style=flat-square&logo=git&logoColor=f7768e)
+
+## GitHub
+
+<p>
+  <img alt="GitHub stats" src="assets/stats.svg" width="400" height="180"/>
+  <img alt="Contribution streak" src="assets/streak.svg" width="400" height="180"/>
 </p>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/top-langs.svg?v=3"/>
+<p>
+  <img alt="Top languages" src="assets/top-langs.svg" width="816" height="118"/>
 </p>
 
----
-
-## 🏆 Achievements
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/trophies.svg?v=3" />
+<p>
+  <img alt="Contribution activity" src="assets/activity.svg" width="816" height="194"/>
 </p>
 
----
-
-## 🧠 Core Stack
-
-### Languages
-![Kotlin](https://img.shields.io/badge/Kotlin-000?style=for-the-badge&logo=kotlin&logoColor=7AA2F7)
-![Dart](https://img.shields.io/badge/Dart-000?style=for-the-badge&logo=dart&logoColor=7DCFFF)
-![Python](https://img.shields.io/badge/Python-000?style=for-the-badge&logo=python&logoColor=9ECE6A)
-![TypeScript](https://img.shields.io/badge/TypeScript-000?style=for-the-badge&logo=typescript&logoColor=BB9AF7)
-![JavaScript](https://img.shields.io/badge/JavaScript-000?style=for-the-badge&logo=javascript&logoColor=E0AF68)
-![Java](https://img.shields.io/badge/Java-000?style=for-the-badge&logo=java&logoColor=F7768E)
-![Rust](https://img.shields.io/badge/Rust-000?style=for-the-badge&logo=rust&logoColor=FF9E64)
-
-### Frameworks & Tools
-![Flutter](https://img.shields.io/badge/Flutter-000?style=for-the-badge&logo=flutter&logoColor=7DCFFF)
-![Firebase](https://img.shields.io/badge/Firebase-000?style=for-the-badge&logo=firebase&logoColor=FF9E64)
-![Node.js](https://img.shields.io/badge/Node.js-000?style=for-the-badge&logo=node.js&logoColor=9ECE6A)
-![Android](https://img.shields.io/badge/Android-000?style=for-the-badge&logo=android&logoColor=7AA2F7)
-![Git](https://img.shields.io/badge/Git-000?style=for-the-badge&logo=git&logoColor=F7768E)
-
----
-
-## 📈 Contribution Activity
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/activity.svg?v=3" />
-</p>
-
----
-
-## 🐍 Contribution Snake
-
-<p align="center">
+<p>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake-dark.svg?raw=true" />
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake.svg?raw=true" />
-    <img alt="github-snake" src="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake.svg?raw=true" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake-dark.svg?raw=true"/>
+    <img alt="Contribution snake" src="https://github.com/Willow7737/Willow7737/blob/output/github-contribution-grid-snake.svg?raw=true"/>
   </picture>
-</p>
-
----
-
-## 📫 Connect
-
-<p align="center">
-  <a href="mailto:spidroidtechnologiesinc@gmail.com">
-    <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-  <a href="https://spidroid.com">
-    <img src="https://img.shields.io/badge/Website-6A5ACD?style=for-the-badge&logo=google-chrome&logoColor=white" />
-  </a>
 </p>

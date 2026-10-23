@@ -1,25 +1,42 @@
 #!/usr/bin/env python3
 """
-GitHub Profile Stats SVG Generator — ASTOUNDING EDITION
-Glassmorphism, neon glows, embedded icons, animated shimmer.
-Uses GitHub GraphQL API. Zero external dependencies for rendered assets.
+GitHub profile stats card generator.
+
+Flat, opaque, crisp SVG cards (no blur filters, no translucency) sized to
+render 1:1 inside the GitHub README column so nothing gets scaled or smeared.
+Uses the GitHub GraphQL API. Standard library only.
+
+On any API failure the existing assets are left untouched and the script exits
+non-zero, so a transient error never overwrites good cards with an error image.
 """
 
+import json
 import os
 import sys
-import json
 import urllib.request
-from datetime import datetime
 from collections import defaultdict
+from datetime import datetime, timezone
+from xml.sax.saxutils import escape
 
-T = {
-    "bg": "#1a1b26", "bg2": "#16161e", "card": "#1f2335",
-    "border": "#414868", "border_neon": "#7aa2f7",
-    "text": "#a9b1d6", "bright": "#c0caf5",
-    "blue": "#7aa2f7", "cyan": "#7dcfff", "green": "#9ece6a",
-    "purple": "#bb9af7", "red": "#f7768e", "yellow": "#e0af68",
-    "orange": "#ff9e64", "pink": "#ff007f",
-}
+ASSETS = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
+
+# Palette (Tokyo Night, flat)
+BG = "#1a1b26"
+BORDER = "#2f334d"
+TRACK = "#2a2e45"
+TEXT = "#a9b1d6"
+BRIGHT = "#c0caf5"
+MUTED = "#565f89"
+BLUE = "#7aa2f7"
+GREEN = "#9ece6a"
+ORANGE = "#ff9e64"
+PURPLE = "#bb9af7"
+
+FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+
+# Two cards sit side by side: 2 * 400 + 16 gap = 816, inside the ~830px README column.
+CARD_W = 400
+CARD_H = 180
 
 GRAPHQL = "https://api.github.com/graphql"
 QUERY = """
@@ -27,15 +44,11 @@ query {
   viewer {
     login
     followers { totalCount }
-    following { totalCount }
-    repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC) {
+    repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false) {
       totalCount
       nodes {
-        name
         stargazerCount
-        forkCount
-        primaryLanguage { name color }
-        languages(first: 10) {
+        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
           edges { size node { name color } }
         }
       }
@@ -44,11 +57,7 @@ query {
       contributionCalendar {
         totalContributions
         weeks {
-          contributionDays {
-            contributionCount
-            date
-            color
-          }
+          contributionDays { contributionCount date }
         }
       }
     }
@@ -56,25 +65,15 @@ query {
 }
 """
 
-ICONS = {
-    "repo": "M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8v2h1.75a.75.75 0 110 1.5h-2.5a.75.75 0 01-.75-.75V3.5a.75.75 0 01.75-.75zM4.5 1.5a1 1 0 00-1 1v10.5h8V2.5a1 1 0 00-1-1h-6z",
-    "star": "M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z",
-    "fork": "M5 3.25a1.75 1.75 0 11-3.5 0 1.75 1.75 0 013.5 0zm0 9.5a1.75 1.75 0 11-3.5 0 1.75 1.75 0 013.5 0zm7.5-5a1.75 1.75 0 11-3.5 0 1.75 1.75 0 013.5 0zM6.5 3.25a.75.75 0 01.75-.75h1a.75.75 0 010 1.5h-1a.75.75 0 01-.75-.75zM6.5 9.5a.75.75 0 01.75-.75h1a.75.75 0 010 1.5h-1a.75.75 0 01-.75-.75zm.75-3a.75.75 0 000 1.5h1a.75.75 0 000-1.5h-1z",
-    "users": "M4.243 4.757a3.757 3.757 0 117.514 0 3.757 3.757 0 01-7.514 0zm-2.25 7.5a2.25 2.25 0 012.25-2.25h9a2.25 2.25 0 012.25 2.25v.75a.75.75 0 01-.75.75h-12a.75.75 0 01-.75-.75v-.75z",
-    "flame": "M8 16c4.418 0 8-3.582 8-8 0-4.418-3.582-8-8-8-4.418 0-8 3.582-8 8 0 4.418 3.582 8 8 8zm.75-11.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zM8 4a4 4 0 00-4 4 .75.75 0 001.5 0 2.5 2.5 0 015 0 .75.75 0 001.5 0 4 4 0 00-4-4z",
-    "commit": "M11.93 8.5a4.002 4.002 0 01-7.86 0H.75a.75.75 0 010-1.5h3.32a4.002 4.002 0 017.86 0h3.32a.75.75 0 010 1.5zm-1.43-.75a2.5 2.5 0 10-5 0 2.5 2.5 0 005 0z",
-}
-
 
 def gql(token):
-    payload = json.dumps({"query": QUERY}).encode()
     req = urllib.request.Request(
         GRAPHQL,
-        data=payload,
+        data=json.dumps({"query": QUERY}).encode(),
         headers={
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
-            "User-Agent": "github-stats-astounding",
+            "User-Agent": "profile-stats-generator",
         },
         method="POST",
     )
@@ -83,334 +82,215 @@ def gql(token):
 
 
 def streaks(weeks):
-    days = []
-    for w in weeks:
-        for d in w["contributionDays"]:
-            days.append({"date": d["date"], "count": d["contributionCount"]})
-    days.sort(key=lambda x: x["date"])
-    today = datetime.now().strftime("%Y-%m-%d")
+    days = sorted(
+        (
+            {"date": d["date"], "count": d["contributionCount"]}
+            for w in weeks
+            for d in w["contributionDays"]
+        ),
+        key=lambda d: d["date"],
+    )
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
     cur = 0
     for d in reversed(days):
-        if d["date"] == today and d["count"] == 0:
+        if d["date"] > today:
             continue
+        if d["date"] == today and d["count"] == 0:
+            continue  # today isn't over yet; don't break the streak
         if d["count"] > 0:
             cur += 1
         else:
             break
-    longest = temp = 0
+
+    longest = run = 0
     for d in days:
-        if d["count"] > 0:
-            temp += 1
-            longest = max(longest, temp)
-        else:
-            temp = 0
+        run = run + 1 if d["count"] > 0 else 0
+        longest = max(longest, run)
     return cur, longest
 
 
-def save(path, svg):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(svg)
-    print("  ->", path)
-
-
-def wrap_svg(content, w, h, extra_defs=""):
-    ts = datetime.utcnow().isoformat()
+def svg(w, h, body):
+    # No timestamp comment: identical data must produce identical bytes,
+    # otherwise the workflow commits a no-op change every run.
     return (
-        f'<?xml version="1.0" encoding="UTF-8"?>\n'
-        f'<!-- Generated: {ts} -->\n'
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}">\n'
-        f'  <defs>\n'
-        f'    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">\n'
-        f'      <stop offset="0%" stop-color="{T["bg2"]}"/>\n'
-        f'      <stop offset="100%" stop-color="{T["bg"]}"/>\n'
-        f'    </linearGradient>\n'
-        f'    <linearGradient id="neonBlue" x1="0%" y1="0%" x2="100%" y2="0%">\n'
-        f'      <stop offset="0%" stop-color="{T["blue"]}"/>\n'
-        f'      <stop offset="100%" stop-color="{T["cyan"]}"/>\n'
-        f'    </linearGradient>\n'
-        f'    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">\n'
-        f'      <stop offset="0%" stop-color="{T["purple"]}"/>\n'
-        f'      <stop offset="100%" stop-color="{T["pink"]}"/>\n'
-        f'    </linearGradient>\n'
-        f'    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">\n'
-        f'      <stop offset="0%" stop-color="{T["green"]}"/>\n'
-        f'      <stop offset="100%" stop-color="{T["cyan"]}"/>\n'
-        f'    </linearGradient>\n'
-        f'    <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="0%">\n'
-        f'      <stop offset="0%" stop-color="{T["orange"]}"/>\n'
-        f'      <stop offset="100%" stop-color="{T["yellow"]}"/>\n'
-        f'    </linearGradient>\n'
-        f'    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">\n'
-        f'      <feGaussianBlur stdDeviation="3" result="blur"/>\n'
-        f'      <feComposite in="SourceGraphic" in2="blur" operator="over"/>\n'
-        f'    </filter>\n'
-        f'    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">\n'
-        f'      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>\n'
-        f'    </filter>\n'
-        f'    {extra_defs}\n'
-        f'  </defs>\n'
-        f'  <rect width="{w}" height="{h}" rx="12" fill="url(#bgGrad)"/>\n'
-        f'  {content}\n'
-        f'</svg>'
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" '
+        f'viewBox="0 0 {w} {h}" shape-rendering="geometricPrecision" '
+        f'text-rendering="optimizeLegibility" role="img">\n'
+        f'  <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="10" '
+        f'fill="{BG}" stroke="{BORDER}"/>\n'
+        f"{body}\n</svg>\n"
     )
 
 
-def icon(name, x, y, size, color):
-    d = ICONS.get(name, "")
-    if not d:
-        return ""
-    s = size / 16
-    return f'<g transform="translate({x},{y}) scale({s})"><path d="{d}" fill="{color}"/></g>'
+def text(x, y, s, size=13, fill=TEXT, weight=400, anchor="start"):
+    return (
+        f'  <text x="{x}" y="{y}" fill="{fill}" font-size="{size}" '
+        f'font-weight="{weight}" text-anchor="{anchor}" '
+        f'font-family="{FONT}">{escape(str(s))}</text>'
+    )
 
 
-def stats_svg(data):
-    repos = data["repositories"]["totalCount"]
-    stars = sum(r["stargazerCount"] for r in data["repositories"]["nodes"])
-    forks = sum(r["forkCount"] for r in data["repositories"]["nodes"])
-    followers = data["followers"]["totalCount"]
-    following = data["following"]["totalCount"]
-    contrib = data["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+def title(s, accent):
+    return (
+        f'  <rect x="24" y="24" width="3" height="16" rx="1.5" fill="{accent}"/>\n'
+        + text(36, 37, s, size=15, fill=BRIGHT, weight=600)
+    )
 
-    stats = [
-        ("Repositories", repos, T["blue"], "repo", "neonBlue"),
-        ("Total Stars", stars, T["yellow"], "star", "neonOrange"),
-        ("Total Forks", forks, T["purple"], "fork", "neonPurple"),
-        ("Contributions", f"{contrib:,}", T["green"], "commit", "neonGreen"),
-        ("Followers", followers, T["red"], "users", "neonBlue"),
-        ("Following", following, T["cyan"], "users", "neonPurple"),
+
+def save(name, content):
+    os.makedirs(ASSETS, exist_ok=True)
+    path = os.path.join(ASSETS, name)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
+    print("  ->", os.path.normpath(path))
+
+
+def stats_svg(v):
+    repos = v["repositories"]["totalCount"]
+    stars = sum(r["stargazerCount"] for r in v["repositories"]["nodes"])
+    followers = v["followers"]["totalCount"]
+    contrib = v["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+
+    items = [
+        ("Public repositories", repos, BLUE),
+        ("Stars earned", stars, ORANGE),
+        ("Followers", followers, PURPLE),
+        ("Contributions, last year", f"{contrib:,}", GREEN),
     ]
-
-    rows = []
-    for i, (label, value, color, iname, grad) in enumerate(stats):
+    parts = [title("GitHub", BLUE)]
+    for i, (label, value, color) in enumerate(items):
         col, row = i % 2, i // 2
-        x, y = 20 + col * 235, 75 + row * 48
-        rows.append(
-            f'    <g transform="translate({x},{y})">\n'
-            f'      {icon(iname, 0, -12, 18, color)}\n'
-            f'      <text x="24" y="0" fill="{T["text"]}" font-size="13" font-family="Segoe UI,Ubuntu,sans-serif">{label}</text>\n'
-            f'      <text x="24" y="16" fill="url(#{grad})" font-size="16" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">{value}</text>\n'
-            f'    </g>'
-        )
-
-    body = (
-        f'  <rect x="10" y="10" width="475" height="175" rx="10" fill="{T["card"]}" fill-opacity="0.6" stroke="{T["border"]}" stroke-width="1" filter="url(#cardShadow)"/>\n'
-        f'  <text x="30" y="45" fill="url(#neonBlue)" font-size="20" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">GitHub Analytics</text>\n'
-        f'  <line x1="30" y1="55" x2="465" y2="55" stroke="{T["border"]}" stroke-width="1"/>\n'
-        + '\n'.join(rows)
-    )
-    return wrap_svg(body, 495, 195)
+        x = 24 + col * 180
+        y = 80 + row * 52
+        parts.append(text(x, y, value, size=24, fill=color, weight=700))
+        parts.append(text(x, y + 20, label, size=12, fill=MUTED))
+    return svg(CARD_W, CARD_H, "\n".join(parts))
 
 
-def langs_svg(data):
-    lang_bytes, lang_color = defaultdict(int), {}
-    for repo in data["repositories"]["nodes"]:
-        for e in repo.get("languages", {}).get("edges", []):
+def streak_svg(v):
+    cal = v["contributionsCollection"]["contributionCalendar"]
+    cur, longest = streaks(cal["weeks"])
+    total = cal["totalContributions"]
+
+    cols = [
+        (f"{total:,}", "Past year", GREEN),
+        (cur, "Current streak", ORANGE),
+        (longest, "Longest streak", PURPLE),
+    ]
+    parts = [title("Consistency", ORANGE)]
+    col_w = (CARD_W - 48) / 3
+    for i, (value, label, color) in enumerate(cols):
+        cx = 24 + col_w * i + col_w / 2
+        parts.append(text(f"{cx:.1f}", 100, value, size=28, fill=color, weight=700, anchor="middle"))
+        parts.append(text(f"{cx:.1f}", 124, label, size=11, fill=MUTED, anchor="middle"))
+        if i:
+            lx = 24 + col_w * i
+            parts.append(f'  <line x1="{lx:.1f}" y1="78" x2="{lx:.1f}" y2="130" stroke="{BORDER}"/>')
+    return svg(CARD_W, CARD_H, "\n".join(parts))
+
+
+def langs_svg(v):
+    size_by, color_by = defaultdict(int), {}
+    for repo in v["repositories"]["nodes"]:
+        for e in repo["languages"]["edges"]:
             n = e["node"]["name"]
-            lang_bytes[n] += e["size"]
-            if n not in lang_color:
-                lang_color[n] = e["node"]["color"] or T["text"]
+            size_by[n] += e["size"]
+            color_by.setdefault(n, e["node"]["color"] or MUTED)
 
-    if not lang_bytes:
-        body = (
-            f'  <rect x="10" y="10" width="280" height="80" rx="10" fill="{T["card"]}" fill-opacity="0.6" stroke="{T["border"]}" stroke-width="1" filter="url(#cardShadow)"/>\n'
-            f'  <text x="150" y="55" text-anchor="middle" fill="{T["text"]}" font-size="14" font-family="sans-serif">No language data</text>'
-        )
-        return wrap_svg(body, 300, 100)
+    w, h = 816, 110
+    parts = [title("Languages", PURPLE)]
+    if not size_by:
+        parts.append(text(24, 76, "No language data yet", fill=MUTED))
+        return svg(w, h, "\n".join(parts))
 
-    total = sum(lang_bytes.values())
-    items = sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)[:8]
-    y, parts = 70, []
-    for name, size in items:
-        pct = size / total * 100
-        c = lang_color.get(name, T["text"])
-        bar_w = 250 * pct / 100
-        parts.append(
-            f'    <text x="20" y="{y}" fill="{T["bright"]}" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">{name}</text>\n'
-            f'    <text x="280" y="{y}" text-anchor="end" fill="{T["text"]}" font-size="13" font-family="Segoe UI,sans-serif">{pct:.1f}%</text>\n'
-            f'    <rect x="20" y="{y + 8}" width="250" height="7" rx="3.5" fill="{T["border"]}" fill-opacity="0.4"/>\n'
-            f'    <rect x="20" y="{y + 8}" width="{bar_w}" height="7" rx="3.5" fill="{c}" filter="url(#glow)">\n'
-            f'      <animate attributeName="width" from="0" to="{bar_w}" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>\n'
-            f'    </rect>'
-        )
-        y += 38
+    total = sum(size_by.values())
+    top = sorted(size_by.items(), key=lambda kv: kv[1], reverse=True)[:6]
+    other = total - sum(s for _, s in top)
 
-    h = y + 20
-    body = (
-        f'  <rect x="10" y="10" width="280" height="{h - 20}" rx="10" fill="{T["card"]}" fill-opacity="0.6" stroke="{T["border"]}" stroke-width="1" filter="url(#cardShadow)"/>\n'
-        f'  <text x="20" y="40" fill="url(#neonPurple)" font-size="18" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">Top Languages</text>\n'
-        f'  <line x1="20" y1="48" x2="270" y2="48" stroke="{T["border"]}" stroke-width="1"/>\n'
-        + '\n'.join(parts)
+    # One stacked bar, clipped to rounded ends.
+    bar_x, bar_y, bar_w, bar_h = 24, 54, w - 48, 8
+    parts.append(
+        f'  <clipPath id="bar"><rect x="{bar_x}" y="{bar_y}" width="{bar_w}" '
+        f'height="{bar_h}" rx="4"/></clipPath>\n'
+        f'  <g clip-path="url(#bar)">\n'
+        f'    <rect x="{bar_x}" y="{bar_y}" width="{bar_w}" height="{bar_h}" fill="{TRACK}"/>'
     )
-    return wrap_svg(body, 300, h)
+    x = bar_x
+    for name, s in top:
+        seg = bar_w * s / total
+        parts.append(f'    <rect x="{x:.2f}" y="{bar_y}" width="{seg:.2f}" height="{bar_h}" fill="{color_by[name]}"/>')
+        x += seg
+    parts.append("  </g>")
+
+    # Legend: one row of name + percent.
+    legend = [(n, s, color_by[n]) for n, s in top]
+    if other > 0:
+        legend.append(("Other", other, MUTED))
+    slot = (w - 48) / len(legend)
+    for i, (name, s, color) in enumerate(legend):
+        lx = 24 + slot * i
+        parts.append(f'  <circle cx="{lx + 4:.1f}" cy="87" r="4" fill="{color}"/>')
+        parts.append(text(f"{lx + 14:.1f}", 91, name, size=12, fill=BRIGHT, weight=600))
+        parts.append(text(f"{lx + 14:.1f}", 106, f"{s / total * 100:.1f}%", size=11, fill=MUTED))
+    return svg(w, h + 8, "\n".join(parts))
 
 
-def activity_svg(data):
-    weeks = data["contributionsCollection"]["contributionCalendar"]["weeks"]
-    weeks = weeks[-53:] if len(weeks) > 53 else weeks
+def activity_svg(v):
+    weeks = v["contributionsCollection"]["contributionCalendar"]["weeks"][-53:]
     cell, gap = 11, 3
-    ml, mt = 20, 55
-    cols = len(weeks)
-    w = ml + cols * (cell + gap) + gap + 20
-    h = mt + 7 * (cell + gap) + gap + 40
+    ml, mt = 24, 56
+    w = 816
+    h = mt + 7 * (cell + gap) + 40
 
-    cells = []
-    for ci, week in enumerate(weeks):
-        for ri, day in enumerate(week["contributionDays"]):
-            x = ml + ci * (cell + gap)
+    counts = [d["contributionCount"] for wk in weeks for d in wk["contributionDays"]]
+    peak = max(counts) if counts else 0
+    levels = ["#22263b", "#2d4a3e", "#3f7a52", "#6ba84f", GREEN]
+
+    def level(n):
+        if n <= 0 or peak == 0:
+            return levels[0]
+        return levels[min(4, 1 + int(3 * (n - 1) / max(peak, 1)))]
+
+    grid_w = len(weeks) * (cell + gap) - gap
+    ox = ml + max(0, (w - 2 * ml - grid_w) / 2)
+    parts = [title("Activity", GREEN)]
+    for ci, wk in enumerate(weeks):
+        for ri, d in enumerate(wk["contributionDays"]):
+            x = ox + ci * (cell + gap)
             y = mt + ri * (cell + gap)
-            fill = day["color"] if day["contributionCount"] > 0 else T["border"]
-            opacity = "0.25" if day["contributionCount"] == 0 else "1"
-            cells.append(
-                f'    <rect x="{x}" y="{y}" width="{cell}" height="{cell}" rx="3" fill="{fill}" fill-opacity="{opacity}"/>'
+            parts.append(
+                f'  <rect x="{x:.0f}" y="{y}" width="{cell}" height="{cell}" rx="2" '
+                f'fill="{level(d["contributionCount"])}"/>'
             )
 
-    legend = (
-        f'    <text x="{ml}" y="{h - 18}" fill="{T["text"]}" font-size="11" font-family="sans-serif">Less</text>\n'
-        f'    <rect x="{ml + 35}" y="{h - 27}" width="11" height="11" rx="3" fill="{T["border"]}" fill-opacity="0.4"/>\n'
-        f'    <rect x="{ml + 51}" y="{h - 27}" width="11" height="11" rx="3" fill="#0e4429"/>\n'
-        f'    <rect x="{ml + 67}" y="{h - 27}" width="11" height="11" rx="3" fill="#006d32"/>\n'
-        f'    <rect x="{ml + 83}" y="{h - 27}" width="11" height="11" rx="3" fill="#26a641"/>\n'
-        f'    <rect x="{ml + 99}" y="{h - 27}" width="11" height="11" rx="3" fill="#39d353"/>\n'
-        f'    <text x="{ml + 120}" y="{h - 18}" fill="{T["text"]}" font-size="11" font-family="sans-serif">More</text>'
-    )
-
-    body = (
-        f'  <rect x="10" y="10" width="{w - 20}" height="{h - 20}" rx="10" fill="{T["card"]}" fill-opacity="0.6" stroke="{T["border"]}" stroke-width="1" filter="url(#cardShadow)"/>\n'
-        f'  <text x="20" y="38" fill="url(#neonGreen)" font-size="16" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">Contribution Activity</text>\n'
-        + '\n'.join(cells) + '\n'
-        + legend
-    )
-    return wrap_svg(body, w, h)
-
-
-def streak_svg(data):
-    weeks = data["contributionsCollection"]["contributionCalendar"]["weeks"]
-    cur, longest = streaks(weeks)
-    total = data["contributionsCollection"]["contributionCalendar"]["totalContributions"]
-
-    def block(cx, label, value, color, grad):
-        glow = 'filter="url(#glow)"' if cur > 0 and label == "Current Streak" else ''
-        return (
-            f'    <g transform="translate({cx}, 0)">\n'
-            f'      <text x="0" y="85" text-anchor="middle" fill="{T["text"]}" font-size="12" font-family="Segoe UI,sans-serif">{label}</text>\n'
-            f'      <text x="0" y="125" text-anchor="middle" fill="url(#{grad})" font-size="32" font-weight="800" font-family="Segoe UI,sans-serif" {glow}>{value}</text>\n'
-            f'    </g>'
-        )
-
-    flame_icon = icon("flame", 235, 140, 24, T["orange"]) if cur > 0 else ""
-
-    body = (
-        f'  <rect x="10" y="10" width="475" height="175" rx="10" fill="{T["card"]}" fill-opacity="0.6" stroke="{T["border"]}" stroke-width="1" filter="url(#cardShadow)"/>\n'
-        f'  <text x="30" y="45" fill="url(#neonOrange)" font-size="20" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">GitHub Streak</text>\n'
-        f'  <line x1="30" y1="55" x2="465" y2="55" stroke="{T["border"]}" stroke-width="1"/>\n'
-        + block(125, "Total Contributions", f"{total:,}", T["green"], "neonGreen") + '\n'
-        + block(250, "Current Streak", cur, T["orange"], "neonOrange") + '\n'
-        + block(375, "Longest Streak", longest, T["purple"], "neonPurple") + '\n'
-        + f'    {flame_icon}'
-    )
-    return wrap_svg(body, 495, 195)
-
-
-def trophies_svg(data):
-    repos = data["repositories"]["totalCount"]
-    stars = sum(r["stargazerCount"] for r in data["repositories"]["nodes"])
-    forks = sum(r["forkCount"] for r in data["repositories"]["nodes"])
-    followers = data["followers"]["totalCount"]
-    contrib = data["contributionsCollection"]["contributionCalendar"]["totalContributions"]
-
-    ach = []
-    if stars >= 100: ach.append(("Starstruck", f"{stars:,} Stars", "neonOrange", T["yellow"]))
-    if contrib >= 1000: ach.append(("Committer", f"{contrib:,}", "neonGreen", T["green"]))
-    if repos >= 20: ach.append(("Creator", f"{repos} Repos", "neonBlue", T["blue"]))
-    if followers >= 50: ach.append(("Influencer", f"{followers} Followers", "neonPurple", T["purple"]))
-    if forks >= 20: ach.append(("Forker", f"{forks} Forks", "neonPurple", T["pink"]))
-    if len(ach) < 3: ach.append(("Developer", "Building...", "neonBlue", T["cyan"]))
-
-    bw, bh, gap = 140, 60, 12
-    tw = len(ach) * (bw + gap) + gap + 20
-    th = 120
-
-    badges = []
-    for i, (title, sub, grad, stroke_c) in enumerate(ach):
-        x = 20 + gap + i * (bw + gap)
-        y = 40
-        shimmer = (
-            f'      <rect x="{x + 2}" y="{y + 2}" width="{bw - 4}" height="{bh - 4}" rx="8" fill="url(#{grad})" fill-opacity="0.08"/>\n'
-            f'      <rect x="{x + 2}" y="{y + 2}" width="{bw - 4}" height="{bh - 4}" rx="8" fill="url(#shimmer)" fill-opacity="0.15">\n'
-            f'        <animate attributeName="x" from="{x - 50}" to="{x + bw + 50}" dur="2s" repeatCount="indefinite"/>\n'
-            f'      </rect>'
-        ) if i == 0 else f'      <rect x="{x + 2}" y="{y + 2}" width="{bw - 4}" height="{bh - 4}" rx="8" fill="url(#{grad})" fill-opacity="0.08"/>'
-
-        badges.append(
-            f'    <g>\n'
-            f'      <rect x="{x}" y="{y}" width="{bw}" height="{bh}" rx="10" fill="{T["card"]}" fill-opacity="0.7" stroke="{stroke_c}" stroke-width="2" filter="url(#cardShadow)"/>\n'
-            + shimmer + '\n'
-            f'      <text x="{x + bw / 2}" y="{y + 24}" text-anchor="middle" fill="url(#{grad})" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif" filter="url(#glow)">{title}</text>\n'
-            f'      <text x="{x + bw / 2}" y="{y + 44}" text-anchor="middle" fill="{T["text"]}" font-size="11" font-family="Segoe UI,sans-serif">{sub}</text>\n'
-            f'    </g>'
-        )
-
-    extra_defs = (
-        f'    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">\n'
-        f'      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>\n'
-        f'      <stop offset="50%" stop-color="#fff" stop-opacity="0.4"/>\n'
-        f'      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>\n'
-        f'    </linearGradient>\n'
-    )
-
-    body = (
-        f'  <text x="20" y="28" fill="url(#neonPurple)" font-size="16" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">Achievements</text>\n'
-        + '\n'.join(badges)
-    )
-    return wrap_svg(body, tw, th, extra_defs=extra_defs)
-
-
-def fallback(msg="Stats temporarily unavailable"):
-    ts = datetime.utcnow().isoformat()
-    svg = (
-        f'<?xml version="1.0" encoding="UTF-8"?>\n'
-        f'<!-- Generated: {ts} -->\n'
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100">\n'
-        f'  <rect fill="{T["card"]}" width="400" height="100" rx="10"/>\n'
-        f'  <text x="200" y="55" text-anchor="middle" fill="{T["red"]}" font-size="14" font-family="sans-serif">{msg}</text>\n'
-        f'</svg>'
-    )
-    for n in ["stats", "streak", "top-langs", "activity", "trophies"]:
-        save("assets/" + n + ".svg", svg)
+    ly = h - 20
+    lx = w - 24 - (len(levels) * 14 + 70)
+    parts.append(text(lx, ly + 9, "Less", size=11, fill=MUTED))
+    for i, c in enumerate(levels):
+        parts.append(f'  <rect x="{lx + 32 + i * 14}" y="{ly}" width="11" height="11" rx="2" fill="{c}"/>')
+    parts.append(text(lx + 32 + len(levels) * 14 + 4, ly + 9, "More", size=11, fill=MUTED))
+    return svg(w, h, "\n".join(parts))
 
 
 def main():
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_STATS_TOKEN")
     if not token:
-        print("Error: GITHUB_TOKEN not set", file=sys.stderr)
-        fallback("GITHUB_TOKEN missing")
-        sys.exit(1)
+        sys.exit("GITHUB_TOKEN / GH_STATS_TOKEN not set; leaving existing assets untouched.")
 
     try:
-        data = gql(token)
-    except Exception as e:
-        print(f"API Error: {e}", file=sys.stderr)
-        fallback("API request failed")
-        sys.exit(0)
+        payload = gql(token)
+    except Exception as e:  # network / HTTP failure
+        sys.exit(f"API request failed ({e}); leaving existing assets untouched.")
 
-    if "errors" in data:
-        print(f"GraphQL errors: {data['errors']}", file=sys.stderr)
-        fallback("GraphQL error")
-        sys.exit(0)
+    viewer = (payload.get("data") or {}).get("viewer")
+    if payload.get("errors") or not viewer:
+        sys.exit(f"GraphQL error: {payload.get('errors') or 'empty response'}; leaving existing assets untouched.")
 
-    if "data" not in data or data["data"] is None or data["data"].get("viewer") is None:
-        print("Invalid response structure", file=sys.stderr)
-        fallback("Invalid API response")
-        sys.exit(0)
-
-    viewer = data["data"]["viewer"]
-
-    save("assets/stats.svg", stats_svg(viewer))
-    save("assets/top-langs.svg", langs_svg(viewer))
-    save("assets/activity.svg", activity_svg(viewer))
-    save("assets/streak.svg", streak_svg(viewer))
-    save("assets/trophies.svg", trophies_svg(viewer))
+    save("stats.svg", stats_svg(viewer))
+    save("streak.svg", streak_svg(viewer))
+    save("top-langs.svg", langs_svg(viewer))
+    save("activity.svg", activity_svg(viewer))
     print("Done.")
 
 
