@@ -20,6 +20,8 @@ from datetime import datetime, timezone
 
 README = os.path.join(os.path.dirname(__file__), "..", "..", "README.md")
 START, END = "<!-- STATS:START -->", "<!-- STATS:END -->"
+# Build/script files that say nothing about what you actually write.
+IGNORED_LANGS = {"Makefile", "Dockerfile", "CMake", "Batchfile", "Shell", "Nix"}
 
 GRAPHQL = "https://api.github.com/graphql"
 QUERY = """
@@ -97,7 +99,8 @@ def render(v):
     size_by = defaultdict(int)
     for repo in v["repositories"]["nodes"]:
         for e in repo["languages"]["edges"]:
-            size_by[e["node"]["name"]] += e["size"]
+            if e["node"]["name"] not in IGNORED_LANGS:
+                size_by[e["node"]["name"]] += e["size"]
     total = sum(size_by.values())
     top = sorted(size_by.items(), key=lambda kv: kv[1], reverse=True)[:6]
 
