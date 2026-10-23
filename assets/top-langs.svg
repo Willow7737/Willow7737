@@ -1,86 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated: 2026-10-23T20:56:45.151800 -->
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="394" viewBox="0 0 300 394">
-  <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#16161e"/>
-      <stop offset="100%" stop-color="#1a1b26"/>
-    </linearGradient>
-    <linearGradient id="neonBlue" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7aa2f7"/>
-      <stop offset="100%" stop-color="#7dcfff"/>
-    </linearGradient>
-    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#bb9af7"/>
-      <stop offset="100%" stop-color="#ff007f"/>
-    </linearGradient>
-    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#9ece6a"/>
-      <stop offset="100%" stop-color="#7dcfff"/>
-    </linearGradient>
-    <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ff9e64"/>
-      <stop offset="100%" stop-color="#e0af68"/>
-    </linearGradient>
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
-    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
-    </filter>
-    
-  </defs>
-  <rect width="300" height="394" rx="12" fill="url(#bgGrad)"/>
-    <rect x="10" y="10" width="280" height="374" rx="10" fill="#1f2335" fill-opacity="0.6" stroke="#414868" stroke-width="1" filter="url(#cardShadow)"/>
-  <text x="20" y="40" fill="url(#neonPurple)" font-size="18" font-weight="700" font-family="Segoe UI,Ubuntu,sans-serif" filter="url(#glow)">Top Languages</text>
-  <line x1="20" y1="48" x2="270" y2="48" stroke="#414868" stroke-width="1"/>
-    <text x="20" y="70" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Java</text>
-    <text x="280" y="70" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">71.1%</text>
-    <rect x="20" y="78" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="78" width="177.62661420962905" height="7" rx="3.5" fill="#b07219" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="177.62661420962905" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="108" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Kotlin</text>
-    <text x="280" y="108" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">9.2%</text>
-    <rect x="20" y="116" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="116" width="22.924293260769804" height="7" rx="3.5" fill="#A97BFF" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="22.924293260769804" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="146" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Rust</text>
-    <text x="280" y="146" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">8.2%</text>
-    <rect x="20" y="154" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="154" width="20.446311077696794" height="7" rx="3.5" fill="#dea584" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="20.446311077696794" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="184" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Shell</text>
-    <text x="280" y="184" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">3.1%</text>
-    <rect x="20" y="192" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="192" width="7.673692358100834" height="7" rx="3.5" fill="#89e051" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="7.673692358100834" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="222" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Python</text>
-    <text x="280" y="222" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">2.4%</text>
-    <rect x="20" y="230" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="230" width="5.9295835205247895" height="7" rx="3.5" fill="#3572A5" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="5.9295835205247895" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="260" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">TypeScript</text>
-    <text x="280" y="260" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">1.3%</text>
-    <rect x="20" y="268" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="268" width="3.268464155027822" height="7" rx="3.5" fill="#3178c6" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="3.268464155027822" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="298" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Makefile</text>
-    <text x="280" y="298" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">1.2%</text>
-    <rect x="20" y="306" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="306" width="2.9476151848743832" height="7" rx="3.5" fill="#427819" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="2.9476151848743832" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
-    <text x="20" y="336" fill="#c0caf5" font-size="13" font-weight="600" font-family="Segoe UI,sans-serif">Dart</text>
-    <text x="280" y="336" text-anchor="end" fill="#a9b1d6" font-size="13" font-family="Segoe UI,sans-serif">0.8%</text>
-    <rect x="20" y="344" width="250" height="7" rx="3.5" fill="#414868" fill-opacity="0.4"/>
-    <rect x="20" y="344" width="2.116497185010464" height="7" rx="3.5" fill="#00B4AB" filter="url(#glow)">
-      <animate attributeName="width" from="0" to="2.116497185010464" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
-    </rect>
+<svg xmlns="http://www.w3.org/2000/svg" width="816" height="118" viewBox="0 0 816 118" shape-rendering="geometricPrecision" text-rendering="optimizeLegibility" role="img">
+  <rect x="0.5" y="0.5" width="815" height="117" rx="10" fill="#1a1b26" stroke="#2f334d"/>
+  <rect x="24" y="24" width="3" height="16" rx="1.5" fill="#bb9af7"/>
+  <text x="36" y="37" fill="#c0caf5" font-size="15" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Languages</text>
+  <clipPath id="bar"><rect x="24" y="54" width="768" height="8" rx="4"/></clipPath>
+  <g clip-path="url(#bar)">
+    <rect x="24" y="54" width="768" height="8" fill="#2a2e45"/>
+    <rect x="24.00" y="54" width="291.94" height="8" fill="#dea584"/>
+    <rect x="315.94" y="54" width="144.84" height="8" fill="#b07219"/>
+    <rect x="460.77" y="54" width="77.59" height="8" fill="#427819"/>
+    <rect x="538.36" y="54" width="69.56" height="8" fill="#3178c6"/>
+    <rect x="607.92" y="54" width="55.96" height="8" fill="#00B4AB"/>
+    <rect x="663.88" y="54" width="50.37" height="8" fill="#3572A5"/>
+  </g>
+  <circle cx="28.0" cy="87" r="4" fill="#dea584"/>
+  <text x="38.0" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Rust</text>
+  <text x="38.0" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">38.0%</text>
+  <circle cx="137.7" cy="87" r="4" fill="#b07219"/>
+  <text x="147.7" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Java</text>
+  <text x="147.7" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">18.9%</text>
+  <circle cx="247.4" cy="87" r="4" fill="#427819"/>
+  <text x="257.4" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Makefile</text>
+  <text x="257.4" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">10.1%</text>
+  <circle cx="357.1" cy="87" r="4" fill="#3178c6"/>
+  <text x="367.1" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">TypeScript</text>
+  <text x="367.1" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">9.1%</text>
+  <circle cx="466.9" cy="87" r="4" fill="#00B4AB"/>
+  <text x="476.9" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Dart</text>
+  <text x="476.9" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">7.3%</text>
+  <circle cx="576.6" cy="87" r="4" fill="#3572A5"/>
+  <text x="586.6" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Python</text>
+  <text x="586.6" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">6.6%</text>
+  <circle cx="686.3" cy="87" r="4" fill="#565f89"/>
+  <text x="696.3" y="91" fill="#c0caf5" font-size="12" font-weight="600" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">Other</text>
+  <text x="696.3" y="106" fill="#565f89" font-size="11" font-weight="400" text-anchor="start" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">10.1%</text>
 </svg>
