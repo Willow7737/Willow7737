@@ -32,16 +32,16 @@
 ## GitHub
 
 <p>
-  <img alt="GitHub stats" src="assets/stats.svg" width="400" height="180"/>
-  <img alt="Contribution streak" src="assets/streak.svg" width="400" height="180"/>
+  <img alt="GitHub stats" src="assets/stats.svg?v=4" width="400" height="180"/>
+  <img alt="Contribution streak" src="assets/streak.svg?v=4" width="400" height="180"/>
 </p>
 
 <p>
-  <img alt="Top languages" src="assets/top-langs.svg" width="816" height="118"/>
+  <img alt="Top languages" src="assets/top-langs.svg?v=4" width="816" height="118"/>
 </p>
 
 <p>
-  <img alt="Contribution activity" src="assets/activity.svg" width="816" height="194"/>
+  <img alt="Contribution activity" src="assets/activity.svg?v=4" width="816" height="194"/>
 </p>
 
 <p>
