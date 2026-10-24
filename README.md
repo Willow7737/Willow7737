@@ -32,16 +32,15 @@
 ## GitHub
 
 <!-- STATS:START -->
-**17** public repositories · **19** stars · **23** followers
+<p align="center">
+  <img alt="Weaver's GitHub stats: 19 stars, 1846 commits, 551 PRs, 51 issues, rank A-" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.0a8dc531.svg" width="480"/>
+</p>
 
-**2,481** contributions in the past year · current streak **169** days · longest **169** days
+<p align="center">
+  <img alt="Streaks: 2482 contributions in the past year, current streak 169 days, longest 169 days" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.47333a34.svg" width="480"/>
+</p>
 
-```text
-Rust        █████████░░░░░░░░░░░   42.7%
-Java        ████░░░░░░░░░░░░░░░░   21.2%
-TypeScript  ██░░░░░░░░░░░░░░░░░░   10.2%
-Dart        ██░░░░░░░░░░░░░░░░░░    8.2%
-Python      █░░░░░░░░░░░░░░░░░░░    7.4%
-HTML        █░░░░░░░░░░░░░░░░░░░    4.8%
-```
+<p align="center">
+  <img alt="Most used languages: Rust 43.2%, Java 21.4%, TypeScript 10.3%, Dart 8.3%" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/langs.564b2ca6.svg" width="480"/>
+</p>
 <!-- STATS:END -->
