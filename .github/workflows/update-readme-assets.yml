@@ -26,4 +26,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update readme stats"
-          file_pattern: "README.md"
+          file_pattern: "README.md assets"
+          add_options: "-A"
