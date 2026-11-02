@@ -37,7 +37,7 @@
 </p>
 
 <p align="center">
-  <img alt="Streaks: 2557 contributions in the past year, current streak 177 days, longest 177 days" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.8618e01b.svg" width="480"/>
+  <img alt="Streaks: 2556 contributions in the past year, current streak 177 days, longest 177 days" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.8276c723.svg" width="480"/>
 </p>
 
 <p align="center">
