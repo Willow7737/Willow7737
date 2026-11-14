@@ -10,10 +10,13 @@
   <a href="https://spidroid.com"><img alt="Website" src="https://img.shields.io/badge/Website-1a1b26?style=flat-square&logo=googlechrome&logoColor=bb9af7"/></a>
 </p>
 
-## Currently
+### Currently
 
-- **Omnia Protocol**: a DAG-based Byzantine fault tolerant consensus system, written in Rust.
-- **Android and web products** under Spidroid, in Kotlin and TypeScript.
+* [Kyron](https://github.com/KyronLabs/kyron.com): an amalgamation of all the best features from the major social media platforms.
+
+* [Omnia Protocol](https://github.com/Willow7737/omnia-protocol.com): a DAG-based Byzantine fault tolerant consensus system, written in Rust.
+
+* Other Android and web products under Spidroid, in Kotlin and TypeScript.
 
 ## Stack
 
