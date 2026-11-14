@@ -12,7 +12,7 @@
 
 ### Currently
 
-* [Kyron](https://github.com/KyronLabs/kyron.com): an amalgamation of all the best features from the major social media platforms.
+* [Kyron](https://github.com/KyronLabs/kyron.com): an amalgamation of all the best features from the major social media platforms, in Typescript.
 
 * [Omnia Protocol](https://github.com/Willow7737/omnia-protocol.com): a DAG-based Byzantine fault tolerant consensus system, written in Rust.
 
