@@ -36,7 +36,7 @@
 
 <!-- STATS:START -->
 <p align="center">
-  <img alt="Weaver's GitHub stats: 20 stars, 1979 commits, 615 PRs, 78 issues, rank A-" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.f32192a6.svg" width="480"/>
+  <img alt="Weaver's GitHub stats: 20 stars, 1980 commits, 615 PRs, 78 issues, rank A-" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.37dc050e.svg" width="480"/>
 </p>
 
 <p align="center">
