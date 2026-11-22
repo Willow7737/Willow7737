@@ -36,11 +36,11 @@
 
 <!-- STATS:START -->
 <p align="center">
-  <img alt="Weaver's GitHub stats: 20 stars, 2000 commits, 616 PRs, 78 issues, rank A-" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.e73103dd.svg" width="480"/>
+  <img alt="Weaver's GitHub stats: 20 stars, 2005 commits, 616 PRs, 78 issues, rank A-" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/stats.f222b26f.svg" width="480"/>
 </p>
 
 <p align="center">
-  <img alt="Streaks: 2727 contributions in the past year, current streak 197 days, longest 197 days" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.1056ae12.svg" width="480"/>
+  <img alt="Streaks: 2732 contributions in the past year, current streak 198 days, longest 198 days" src="https://raw.githubusercontent.com/Willow7737/Willow7737/main/assets/streak.8f69cab0.svg" width="480"/>
 </p>
 
 <p align="center">
